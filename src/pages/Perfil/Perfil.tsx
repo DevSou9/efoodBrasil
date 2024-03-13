@@ -2,7 +2,7 @@ import React from 'react'
 import { HeroPerfil } from '../../components/HeroPerfil/'
 // import { ModeloCardPerfil } from '../../models/ModeloCardPerfil'
 // import pizza from '../../assets/images/pizza.jpg'
-// import { ListagemPerfil } from '../../components/ListagemPerfil'
+import { ListagemPerfil } from '../../components/ListagemPerfil'
 import { Footer } from '../../components/Footer'
 
 // export const modeloCardPerfil: ModeloCardPerfil[] = [
@@ -90,7 +90,7 @@ export const Perfil = () => {
   return (
     <>
       <HeroPerfil />
-      {/* <ListagemPerfil modeloCardPerfil={modeloCardPerfil} /> */}
+      <ListagemPerfil />
       <Footer />
     </>
   )

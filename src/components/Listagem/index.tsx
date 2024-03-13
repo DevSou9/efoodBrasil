@@ -56,8 +56,7 @@ export const Listagem = () => {
 
               {item.destacado && <LinkDestaqueSemana />}
               <LinkTypeDish>{item.tipo}</LinkTypeDish>
-
-              <LinkSaibaMais />
+              <LinkSaibaMais id={item.id} />
             </ul>
           ))}
       </DivListagem>

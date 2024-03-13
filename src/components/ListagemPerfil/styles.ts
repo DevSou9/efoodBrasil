@@ -16,7 +16,9 @@ export const StyleListagemPerfil = styled.div`
 
     img {
       margin-bottom: 8px;
+      width: 100%;
       height: 168px;
+      object-fit: cover;
       display: block;
     }
 

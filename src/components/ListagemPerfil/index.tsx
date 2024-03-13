@@ -1,21 +1,40 @@
-import React from 'react'
-import { ModeloCardPerfil } from '../../models/ModeloCardPerfil'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { cardapio } from '../../models/ModeloCardPerfil'
 import { LinkAdicionarAoCarrinho } from '../Links/LinkAdicionarAoCarrinho'
 import { StyleListagemPerfil } from './styles'
 
-export type Props = {
-  modeloCardPerfil: ModeloCardPerfil[]
-}
+export const ListagemPerfil = () => {
+  const { id } = useParams()
 
-export const ListagemPerfil = ({ modeloCardPerfil }: Props) => {
+  const [produtos, setProdutos] = useState<cardapio[]>([])
+
+  async function foods() {
+    const food = await fetch(
+      `https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`
+    )
+    const foodJson = await food.json()
+    setProdutos(foodJson.cardapio)
+  }
+
+  useEffect(() => {
+    foods()
+  }, [])
+
+  function redutor(descricao: string) {
+    if (descricao.length > 132) {
+      return descricao.slice(0, 129) + '...'
+    }
+  }
+
   return (
     <div className="container">
       <StyleListagemPerfil>
-        {modeloCardPerfil.map((item) => (
+        {produtos.map((item) => (
           <ul key={item.id}>
-            <img src={item.capa} alt={item.titulo} key={item.id} />
-            <h4>{item.titulo}</h4>
-            <p>{item.descricao}</p>
+            <img src={item.foto} alt={item.nome} key={item.id} />
+            <h4>{item.nome}</h4>
+            <p>{redutor(item.descricao)}</p>
             <LinkAdicionarAoCarrinho />
           </ul>
         ))}
