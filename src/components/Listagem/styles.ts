@@ -18,10 +18,12 @@ export const DivListagem = styled.div`
     margin: 0;
     padding: 0;
     width: 472px;
+    height: 398px;
     background-color: ${cor.fundoCard};
     position: relative;
     font-size: 18px;
     border: 1px solid ${cor.corPrincipal};
+    border-top: none;
 
     .divImg {
       width: 100%;
@@ -29,6 +31,8 @@ export const DivListagem = styled.div`
 
     .divImg img {
       width: 100%;
+      height: 217px;
+      object-fit: cover;
       display: block;
     }
 

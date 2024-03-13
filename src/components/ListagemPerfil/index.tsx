@@ -13,8 +13,8 @@ export const ListagemPerfil = ({ modeloCardPerfil }: Props) => {
       <StyleListagemPerfil>
         {modeloCardPerfil.map((item) => (
           <ul key={item.id}>
-            <img src={item.urlImg} alt={item.title} key={item.id} />
-            <h4>{item.title}</h4>
+            <img src={item.capa} alt={item.titulo} key={item.id} />
+            <h4>{item.titulo}</h4>
             <p>{item.descricao}</p>
             <LinkAdicionarAoCarrinho />
           </ul>

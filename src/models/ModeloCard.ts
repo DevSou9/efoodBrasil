@@ -1,27 +1,27 @@
 class ModeloCard {
   id: number
-  urlImg: string
-  destaque: boolean
-  typeDish: string
-  title: string
-  nota: number
-  descricao: string | JSX.Element
+  capa: string
+  destacado: boolean
+  tipo: string
+  titulo: string
+  avaliacao: number
+  descricao: string
 
   constructor(
     id: number,
-    urlImg: string,
-    destaque: boolean,
-    typeDish: string,
-    title: string,
-    nota: number,
+    capa: string,
+    destacado: boolean,
+    tipo: string,
+    titulo: string,
+    avaliacao: number,
     descricao: string
   ) {
     this.id = id
-    this.urlImg = urlImg
-    this.destaque = destaque
-    this.typeDish = typeDish
-    this.title = title
-    this.nota = nota
+    this.capa = capa
+    this.destacado = destacado
+    this.tipo = tipo
+    this.titulo = titulo
+    this.avaliacao = avaliacao
     this.descricao = descricao
   }
 }
