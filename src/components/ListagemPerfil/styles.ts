@@ -22,6 +22,10 @@ export const StyleListagemPerfil = styled.div`
       display: block;
     }
 
+    button {
+      border: none;
+    }
+
     h4 {
       font-size: 16px;
       font-weight: 900;

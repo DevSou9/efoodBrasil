@@ -6,9 +6,11 @@ import {
 
 export const LinkAdicionarAoCarrinho = () => {
   return (
-    <StyleCarrinho to="/perfil">
-      {' '}
-      <StyledLinkDiv>Adicionar ao carrinho</StyledLinkDiv>
-    </StyleCarrinho>
+    <>
+      <StyleCarrinho>
+        {' '}
+        <StyledLinkDiv>Adicionar ao carrinho</StyledLinkDiv>
+      </StyleCarrinho>
+    </>
   )
 }

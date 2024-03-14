@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { colors as cor } from '../../../variaveis'
 
 export const StyledLinkDiv = styled.div`
@@ -9,9 +9,10 @@ export const StyledLinkDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `
 
-export const StyleLinkAdicionarAoCarrinho = styled(Link)`
+export const StyleLinkAdicionarAoCarrinho = styled.div`
   font-size: 14px;
   font-weight: bold;
   line-height: 16px;
