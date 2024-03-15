@@ -4,5 +4,6 @@ export const colors = {
   fundoCard: '#fff',
   corPrincipal: '#E66767',
   corFontLink: '#FFEBD9',
-  corSecundaria: '#FFEBD9'
+  corSecundaria: '#FFEBD9',
+  corBranca: '#fff'
 }

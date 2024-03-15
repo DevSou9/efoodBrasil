@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router-dom'
 
 export const HeroPerfil = () => {
   const [restaurante, setRestaurante] = useState('')
+  const [titulo, setTitulo] = useState('')
+  const [tipo, setTipo] = useState('')
 
   const { id } = useParams()
 
@@ -13,9 +15,11 @@ export const HeroPerfil = () => {
       const dados = await fetch(
         `https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`
       )
-      const { capa } = await dados.json()
+      const { capa, titulo, tipo } = await dados.json()
 
       setRestaurante(capa)
+      setTitulo(titulo)
+      setTipo(tipo)
     }
     getDados()
   }, [id])
@@ -32,7 +36,18 @@ export const HeroPerfil = () => {
         </div>
       </StyleHeroPerfil>
 
-      <DivBanner foto={restaurante} />
+      <DivBanner foto={restaurante}>
+        <div className="container divBanner">
+          <div className="pTipo">
+            <p>{tipo}</p>
+          </div>
+
+          <div className="pTitulo">
+            {' '}
+            <p>{titulo}</p>
+          </div>
+        </div>
+      </DivBanner>
     </>
   )
 }
