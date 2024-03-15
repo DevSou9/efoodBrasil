@@ -2,12 +2,7 @@ export type cardapio = {
   id: number
   nome: string
   foto: string
-  preco?: number
+  preco: number
   descricao: string
-  porcao?: string
+  porcao: string
 }
-
-// export type ModeloCardPerfil = Omit<
-//   ModeloCard,
-//   'destaque' | 'typeDish' | 'nota'
-// >

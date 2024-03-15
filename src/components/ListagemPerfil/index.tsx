@@ -7,6 +7,7 @@ import { ModalCardapio } from '../ModalCardapio'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { abrirFechar } from '../../store/reducer/modalCardapio'
+import { dadosCard } from '../../store/reducer/modalDadosCardPefil'
 
 export const ListagemPerfil = () => {
   const { id } = useParams()
@@ -26,8 +27,25 @@ export const ListagemPerfil = () => {
   )
   const dispatch = useDispatch()
 
-  const divModalAbrir = () => {
+  const divModalAbrirInserir = (
+    foto: string,
+    preco: number,
+    id: number,
+    nome: string,
+    descricao: string,
+    porcao: string
+  ) => {
     dispatch(abrirFechar())
+    const dadosCardapio: cardapio = {
+      foto: foto,
+      preco: preco,
+      id: id,
+      nome: nome,
+      descricao: descricao,
+      porcao: porcao
+    }
+
+    dispatch(dadosCard(dadosCardapio))
   }
 
   useEffect(() => {
@@ -39,7 +57,14 @@ export const ListagemPerfil = () => {
       return descricao.slice(0, 129) + '...'
     }
   }
-
+  // const cardap: cardapio = {
+  //   id: 0,
+  //   nome: '',
+  //   foto: '',
+  //   preco: 0,
+  //   descricao: '',
+  //   porcao: ''
+  // }
   return (
     <div className="container">
       {statusAbrirFechar && <ModalCardapio />}
@@ -51,7 +76,19 @@ export const ListagemPerfil = () => {
               <h4>{item.nome}</h4>
               <p>{redutor(item.descricao)}</p>
 
-              <button type="button" onClick={() => divModalAbrir()}>
+              <button
+                type="button"
+                onClick={() =>
+                  divModalAbrirInserir(
+                    item.foto,
+                    item.preco,
+                    item.id,
+                    item.nome,
+                    item.descricao,
+                    item.porcao
+                  )
+                }
+              >
                 <LinkAdicionarAoCarrinho />
               </button>
             </ul>
