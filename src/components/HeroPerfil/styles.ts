@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import heroPerfil from './../../assets/images/miniHero.svg'
-import bannerPerfil from './../../assets/images/bannerPerfil.jpg'
+
+export type PropsBannerPerfil = {
+  foto: string
+}
 
 export const StyleHeroPerfil = styled.div`
   background-image: url(${heroPerfil});
@@ -14,8 +17,11 @@ export const StyleHeroPerfil = styled.div`
     align-items: center;
   }
 `
-export const DivBanner = styled.div`
-  background-image: url(${bannerPerfil});
+export const DivBanner = styled.div<PropsBannerPerfil>`
   width: 100%;
   height: 280px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${(props) => props.foto});
 `
