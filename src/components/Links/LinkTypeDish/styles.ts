@@ -7,4 +7,5 @@ export const StyleLinkTypeDish = styled(MixinLinks)`
   width: 64px;
   top: 16px;
   right: 16px;
+  cursor: default;
 `

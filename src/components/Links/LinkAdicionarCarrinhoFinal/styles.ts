@@ -5,12 +5,10 @@ import { colors as cor } from '../../../variaveis'
 export const StyleLink = styled.div`
   font-size: 14px;
   line-height: 16px;
-  width: 204px;
-  height: 16px;
+  width: 218px;
+  height: 24px;
   font-size: 14px;
-  margin-top: 16px;
-  margin-bottom: 8px;
-  margin-left: 8px;
+  font-weight: bold;
   position: relative;
   background-color: ${cor.corSecundaria};
   color: ${cor.corPrincipal};

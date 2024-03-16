@@ -6,5 +6,5 @@ export type PropsLink = {
 }
 
 export const LinkTypeDish = ({ children }: PropsLink) => {
-  return <StyleLinkTypeDish to="/perfil">{children}</StyleLinkTypeDish>
+  return <StyleLinkTypeDish to="/#">{children}</StyleLinkTypeDish>
 }

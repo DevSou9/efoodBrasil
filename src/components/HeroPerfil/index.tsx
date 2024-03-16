@@ -39,7 +39,7 @@ export const HeroPerfil = () => {
       <DivBanner foto={restaurante}>
         <div className="container divBanner">
           <div className="pTipo">
-            <p>{tipo}</p>
+            <p>{tipo.replace(/^\w/, (l) => l.toUpperCase())}</p>
           </div>
 
           <div className="pTitulo">

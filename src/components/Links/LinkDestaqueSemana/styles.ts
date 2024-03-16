@@ -7,4 +7,5 @@ export const LinkStyleDestaque = styled(MixinLinks)`
   width: 120px;
   top: 16px;
   right: 86px;
+  cursor: default;
 `

@@ -57,14 +57,7 @@ export const ListagemPerfil = () => {
       return descricao.slice(0, 129) + '...'
     }
   }
-  // const cardap: cardapio = {
-  //   id: 0,
-  //   nome: '',
-  //   foto: '',
-  //   preco: 0,
-  //   descricao: '',
-  //   porcao: ''
-  // }
+
   return (
     <div className="container">
       {statusAbrirFechar && <ModalCardapio />}
@@ -75,7 +68,6 @@ export const ListagemPerfil = () => {
               <img src={item.foto} alt={item.nome} key={item.id} />
               <h4>{item.nome}</h4>
               <p>{redutor(item.descricao)}</p>
-
               <button
                 type="button"
                 onClick={() =>

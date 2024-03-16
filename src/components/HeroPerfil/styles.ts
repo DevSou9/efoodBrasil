@@ -25,6 +25,17 @@ export const DivBanner = styled.div<PropsBannerPerfil>`
   background-size: cover;
   background-image: url(${(props) => props.foto});
   color: ${cor.corBranca};
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    background-color: rgba(0, 0, 0, 0.7);
+    content: '';
+  }
 
   .divBanner {
     position: relative;
@@ -32,11 +43,13 @@ export const DivBanner = styled.div<PropsBannerPerfil>`
     .pTipo {
       position: absolute;
       top: 24px;
+      z-index: 1;
     }
 
     .pTitulo {
       position: absolute;
       top: 215px;
+      z-index: 1;
     }
   }
 `
