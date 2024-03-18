@@ -1,3 +1,4 @@
+import { cardapio } from './ModeloCardPerfil'
 class ModeloCard {
   id: number
   capa: string
@@ -6,6 +7,7 @@ class ModeloCard {
   titulo: string
   avaliacao: number
   descricao: string
+  cardapio?: cardapio[]
 
   constructor(
     id: number,
@@ -14,7 +16,8 @@ class ModeloCard {
     tipo: string,
     titulo: string,
     avaliacao: number,
-    descricao: string
+    descricao: string,
+    cardapio?: cardapio[]
   ) {
     this.id = id
     this.capa = capa
@@ -23,6 +26,7 @@ class ModeloCard {
     this.titulo = titulo
     this.avaliacao = avaliacao
     this.descricao = descricao
+    this.cardapio = cardapio
   }
 }
 export default ModeloCard
