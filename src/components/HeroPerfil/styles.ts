@@ -17,6 +17,10 @@ export const StyleHeroPerfil = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
+  .pCartHero {
+    cursor: pointer;
+  }
 `
 export const DivBanner = styled.div<PropsBannerPerfil>`
   width: 100%;

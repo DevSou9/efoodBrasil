@@ -5,6 +5,7 @@ import { LinkAdicionarCarrinhoFinal } from '../Links/LinkAdicionarCarrinhoFinal'
 import { useDispatch, useSelector } from 'react-redux'
 import { abrirFechar } from '../../store/reducer/modalCardapio'
 import { RootReducer } from '../../store'
+import { abrirFecharCart } from '../../store/reducer/cartAbrirFechar'
 
 export const ModalCardapio = () => {
   const dadosCardapio = useSelector(
@@ -12,6 +13,11 @@ export const ModalCardapio = () => {
   )
 
   const dispatch = useDispatch()
+
+  const cartAbrirFechar = () => {
+    dispatch(abrirFecharCart())
+    dispatch(abrirFechar())
+  }
 
   const abrirFecharModal = () => {
     dispatch(abrirFechar())
@@ -45,7 +51,18 @@ export const ModalCardapio = () => {
               />
             </div>
           </header>
-          <LinkAdicionarCarrinhoFinal valor={dadosCardapio[0].preco} />
+          <div onClick={cartAbrirFechar}>
+            <LinkAdicionarCarrinhoFinal
+              itens={{
+                id: dadosCardapio[0].id,
+                preco: dadosCardapio[0].preco,
+                porcao: dadosCardapio[0].porcao,
+                descricao: dadosCardapio[0].descricao,
+                foto: dadosCardapio[0].foto,
+                nome: dadosCardapio[0].nome
+              }}
+            />
+          </div>
         </div>
       </StyleModalContent>
     </>

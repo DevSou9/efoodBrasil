@@ -8,8 +8,6 @@ const api = createApi({
   }),
   endpoints: (builder) => ({
     getDestaqueEfood: builder.query<cardapio, void>({
-      //<cardapio, void> cardapio é o que iremos receber e o void (vazio) será o que estamos passando
-
       query: () => 'destaque'
     }),
 
@@ -18,7 +16,6 @@ const api = createApi({
     }),
 
     getRestaurante: builder.query<ModeloCard, string>({
-      // aqui é string pq na url tudo vira string, até mesmo o id
       query: (id) => `/${id}`
     }),
 

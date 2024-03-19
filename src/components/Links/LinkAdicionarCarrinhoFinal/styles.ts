@@ -15,4 +15,5 @@ export const StyleLink = styled.div`
   padding-top: 4px;
   padding-bottom: 4px;
   text-align: center;
+  cursor: pointer;
 `

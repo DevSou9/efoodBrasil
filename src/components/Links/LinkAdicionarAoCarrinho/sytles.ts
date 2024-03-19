@@ -18,4 +18,5 @@ export const StyleLinkAdicionarAoCarrinho = styled.div`
   line-height: 16px;
   text-decoration: none;
   color: ${cor.corPrincipal};
+  cursor: pointer;
 `
