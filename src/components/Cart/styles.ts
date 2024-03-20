@@ -30,6 +30,9 @@ export const StyleAside = styled.aside`
   background-color: ${cor.corPrincipal};
   padding: 32px 8px 0 8px;
   z-index: 3;
+  position: absolute;
+  top: 0;
+  right: 0;
 
   ul {
     background-color: ${cor.corSecundaria};
