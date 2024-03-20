@@ -43,8 +43,8 @@ export const ListagemPerfil = () => {
   }
 
   function redutor(descricao: string) {
-    if (descricao.length > 132) {
-      return descricao.slice(0, 129) + '...'
+    if (descricao.length > 128) {
+      return descricao.slice(0, 125) + '...'
     }
   }
   if (produtos) {

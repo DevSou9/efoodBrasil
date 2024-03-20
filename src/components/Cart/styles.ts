@@ -55,6 +55,15 @@ export const StyleAside = styled.aside`
       flex-direction: column;
       align-items: flex-start;
 
+      h3 {
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      p {
+        font-weight: 400;
+      }
+
       img {
         width: 16px;
         height: 16px;
@@ -62,6 +71,7 @@ export const StyleAside = styled.aside`
         position: absolute;
         bottom: 8px;
         right: 8px;
+        cursor: pointer;
       }
     }
 

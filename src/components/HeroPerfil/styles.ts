@@ -16,6 +16,8 @@ export const StyleHeroPerfil = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    font-weight: 900;
   }
 
   .pCartHero {
@@ -48,12 +50,16 @@ export const DivBanner = styled.div<PropsBannerPerfil>`
       position: absolute;
       top: 24px;
       z-index: 1;
+      font-size: 32px;
+      font-weight: 100;
     }
 
     .pTitulo {
       position: absolute;
       top: 215px;
       z-index: 1;
+      font-size: 32px;
+      font-weight: 900;
     }
   }
 `

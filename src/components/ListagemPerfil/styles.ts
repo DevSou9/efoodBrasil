@@ -12,7 +12,6 @@ export const StyleListagemPerfil = styled.div`
     padding: 8px;
     background-color: ${cor.corPrincipal};
     width: 320px;
-    height: 338px;
 
     img {
       margin-bottom: 8px;
@@ -30,6 +29,7 @@ export const StyleListagemPerfil = styled.div`
       font-size: 16px;
       font-weight: 900;
       line-height: 18px;
+      margin-bottom: 8px;
     }
 
     p {
