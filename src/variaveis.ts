@@ -5,5 +5,6 @@ export const colors = {
   corPrincipal: '#E66767',
   corFontLink: '#FFEBD9',
   corSecundaria: '#FFEBD9',
-  corBranca: '#fff'
+  corBranca: '#fff',
+  corCinza: '#4B4B4B'
 }
