@@ -1,22 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+// import { useCompraMutation } from '../../../../service/api'
 import { Aside } from '../../components/Aside'
 import { Input } from '../../components/Input'
 import { LinkPAG } from '../../components/LinkPag'
 import { StyleForm } from './style'
 import { Titulo } from '../../components/Titulo'
+import { Button } from '../../../Button/buttonCheckout'
+import { useDispatch, useSelector } from 'react-redux'
+import { addEndereco } from '../../../../store/reducer/checkoutTempEndereco'
+import { RootReducer } from '../../../../store'
 
 export const Entrega = () => {
   const status = true
-
+  const dispatch = useDispatch()
   // const verificardorDeErro = (name: string) =>{
   //   const touched = name in form.touched
   //   const errors = name in form.errors
   //   cont temErro = touched && errors
   //   return temErro
   // }
+  const [dados, setDados] = useState('')
 
+  const dadosParaConsole = useSelector((store: RootReducer) =>
+    JSON.stringify(store.CheckoutTempEntregaSlice.enderecoUsuario)
+  )
+  useEffect(() => {
+    setDados(dados)
+  }, [])
   const getErroMsg = (name: string, message?: string) => {
     const touched = name in form.touched
     const errors = name in form.errors
@@ -26,7 +38,7 @@ export const Entrega = () => {
 
   const form = useFormik({
     initialValues: {
-      nome: 'a',
+      nome: '',
       endereco: '',
       cidade: '',
       cep: '',
@@ -42,10 +54,29 @@ export const Entrega = () => {
       cep: Yup.string().required('O campo é obrigatório'),
       numeroEndereco: Yup.string().required('O campo é obrigatório')
     }),
-    onSubmit: (values) => {
-      console.log(values)
-    }
+    onSubmit: () => {}
   })
+
+  const enderecoParaEntrega = () => {
+    dispatch(
+      addEndereco({
+        delivery: {
+          receiver: form.values.nome,
+          address: {
+            description: form.values.endereco,
+            city: form.values.cidade,
+            zipCode: form.values.cep,
+            number: Number(form.values.numeroEndereco),
+            complement: form.values.complementoEndereco
+          }
+        }
+      })
+    )
+  }
+
+  const verStado = () => {
+    console.log(dadosParaConsole)
+  }
 
   return (
     <Aside status={status}>
@@ -129,8 +160,18 @@ export const Entrega = () => {
           />
 
           <div className="divLinkPAG">
-            <button type="submit">Submit test </button>
-            <LinkPAG rota="">Continuar com o pagamento</LinkPAG>
+            {/* <button onClick={() => enderecoParaEntrega()} type="button">
+              ++++++++++
+            </button> */}
+            <button type="button" onClick={verStado}>
+              VER no Console
+            </button>
+
+            <Button onClick={() => enderecoParaEntrega()} type="button">
+              Continuar com o pagamento
+            </Button>
+
+            {/* <LinkPAG rota="">Continuar com o pagamento</LinkPAG> */}
 
             <LinkPAG rota="">Voltar para o carrinho</LinkPAG>
           </div>

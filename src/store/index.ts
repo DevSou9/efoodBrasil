@@ -4,6 +4,7 @@ import dadosCardCardapioSlice from './reducer/modalDadosCardPefil'
 import api from '../service/api'
 import dadosCartSlice from './reducer/cart'
 import cartAbrirFecharSlice from './reducer/cartAbrirFechar'
+import CheckoutTempEntregaSlice from './reducer/checkoutTempEndereco'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     dadosCardCardapioSliceStore: dadosCardCardapioSlice,
     dadosCartSlice,
     cartAbrirFecharSlice,
+    CheckoutTempEntregaSlice,
     [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>

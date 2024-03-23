@@ -9,9 +9,10 @@ import { Titulo } from '../../components/Titulo'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../../store'
 import { somarValorCompra } from '../../../../functionsGlobal'
+import { Button } from '../../../Button/buttonCheckout'
 
 export const Pagamento = () => {
-  const status = true
+  const status = false
 
   const form = useFormik({
     initialValues: {
@@ -129,8 +130,9 @@ export const Pagamento = () => {
           </div>
 
           <div className="divLinkPAG">
-            <button type="submit">Finalizar pagamento</button>
-            <LinkPAG rota="">Finalizar pagamento</LinkPAG>
+            <Button>Finalizar pagamento</Button>
+            {/* <button type="submit">Finalizar pagamento</button> */}
+            {/* <LinkPAG rota="">Finalizar pagamento</LinkPAG> */}
             <LinkPAG rota="">Voltar para a edição de endereço</LinkPAG>
           </div>
         </StyleForm>
