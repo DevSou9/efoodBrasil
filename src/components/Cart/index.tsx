@@ -6,11 +6,17 @@ import { RootReducer } from '../../store'
 import { abrirFecharCart } from '../../store/reducer/cartAbrirFechar'
 import { removeCard } from '../../store/reducer/cart'
 import { formataPreco } from '../../functionsGlobal'
+import { alterarStatusEntrega } from '../../store/reducer/statusEntrega'
 
 export const Cart = () => {
   const dispatch = useDispatch()
   const cartAbrirFechar = () => {
     dispatch(abrirFecharCart())
+  }
+
+  const abrirDivEntrega = () => {
+    dispatch(alterarStatusEntrega())
+    cartAbrirFechar()
   }
 
   const pedidosAoCart = useSelector(
@@ -59,7 +65,9 @@ export const Cart = () => {
             <p>{somarCart()}</p>
           </div>
 
-          <button>Continuar com a entrega</button>
+          <button type="button" onClick={abrirDivEntrega}>
+            Continuar com a entrega
+          </button>
         </StyleAside>
       </DivCart>
     </>

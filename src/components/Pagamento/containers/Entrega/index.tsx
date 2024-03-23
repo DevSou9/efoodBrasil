@@ -11,9 +11,14 @@ import { Button } from '../../../Button/buttonCheckout'
 import { useDispatch, useSelector } from 'react-redux'
 import { addEndereco } from '../../../../store/reducer/checkoutTempEndereco'
 import { RootReducer } from '../../../../store'
+import { alterarStautsPagamento } from '../../../../store/reducer/statusPagamento'
+import { alterarStatusEntrega } from '../../../../store/reducer/statusEntrega'
 
 export const Entrega = () => {
-  const status = true
+  const statusEntrega = useSelector(
+    (store: RootReducer) => store.statusEntregaSlice
+  )
+
   const dispatch = useDispatch()
   // const verificardorDeErro = (name: string) =>{
   //   const touched = name in form.touched
@@ -57,6 +62,11 @@ export const Entrega = () => {
     onSubmit: () => {}
   })
 
+  const alterarStatusPagamentoNaPagina = () =>
+    dispatch(alterarStautsPagamento())
+
+  const alterarStatusEntregaNaPagina = () => dispatch(alterarStatusEntrega())
+
   const enderecoParaEntrega = () => {
     dispatch(
       addEndereco({
@@ -72,6 +82,10 @@ export const Entrega = () => {
         }
       })
     )
+    verStado()
+    alterarStatusPagamentoNaPagina()
+    alterarStatusEntregaNaPagina()
+    // irAoPagamento()
   }
 
   const verStado = () => {
@@ -79,7 +93,7 @@ export const Entrega = () => {
   }
 
   return (
-    <Aside status={status}>
+    <Aside status={statusEntrega}>
       <form onSubmit={form.handleSubmit}>
         <Titulo>Entrega</Titulo>
         <StyleForm>

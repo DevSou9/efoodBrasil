@@ -5,6 +5,9 @@ import api from '../service/api'
 import dadosCartSlice from './reducer/cart'
 import cartAbrirFecharSlice from './reducer/cartAbrirFechar'
 import CheckoutTempEntregaSlice from './reducer/checkoutTempEndereco'
+import statusPagamentoSlice from './reducer/statusPagamento'
+import statusEntregaSlice from './reducer/statusEntrega'
+import statusConcluidoSlice from './reducer/statusConcluido'
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +16,9 @@ export const store = configureStore({
     dadosCartSlice,
     cartAbrirFecharSlice,
     CheckoutTempEntregaSlice,
+    statusPagamentoSlice,
+    statusEntregaSlice,
+    statusConcluidoSlice,
     [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>

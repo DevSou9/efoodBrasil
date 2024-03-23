@@ -12,7 +12,7 @@ import { somarValorCompra } from '../../../../functionsGlobal'
 import { Button } from '../../../Button/buttonCheckout'
 
 export const Pagamento = () => {
-  const status = false
+  const status = useSelector((store: RootReducer) => store.statusPagamentoSlice)
 
   const form = useFormik({
     initialValues: {
@@ -130,7 +130,7 @@ export const Pagamento = () => {
           </div>
 
           <div className="divLinkPAG">
-            <Button>Finalizar pagamento</Button>
+            <Button type={'button'}>Finalizar pagamento</Button>
             {/* <button type="submit">Finalizar pagamento</button> */}
             {/* <LinkPAG rota="">Finalizar pagamento</LinkPAG> */}
             <LinkPAG rota="">Voltar para a edição de endereço</LinkPAG>

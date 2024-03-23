@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 import { Cart } from './components/Cart'
 import { Entrega } from './components/Pagamento/containers/Entrega'
-// import { Pagamento } from './components/Pagamento/containers/Pagamento'
+import { Pagamento } from './components/Pagamento/containers/Pagamento'
 // import { Confirmacao } from './components/Pagamento/containers/Confirmacao'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Cart />
         <Entrega />
-        {/* <Pagamento /> */}
+        <Pagamento />
         {/* <Confirmacao /> */}
         <GlobalCss />
         <Rotas />
