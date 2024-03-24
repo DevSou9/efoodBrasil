@@ -8,7 +8,7 @@ import { store } from './store'
 import { Cart } from './components/Cart'
 import { Entrega } from './components/Pagamento/containers/Entrega'
 import { Pagamento } from './components/Pagamento/containers/Pagamento'
-// import { Confirmacao } from './components/Pagamento/containers/Confirmacao'
+import { Confirmacao } from './components/Pagamento/containers/Confirmacao'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Cart />
         <Entrega />
         <Pagamento />
-        {/* <Confirmacao /> */}
+        <Confirmacao />
         <GlobalCss />
         <Rotas />
       </BrowserRouter>

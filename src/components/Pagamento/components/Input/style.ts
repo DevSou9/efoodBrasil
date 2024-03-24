@@ -4,6 +4,7 @@ import React from 'react'
 
 export type PropsInput = {
   width: string
+  type?: 'text' | 'number' | undefined
   labelId?: string
   textoLabel?: string
   id?: string

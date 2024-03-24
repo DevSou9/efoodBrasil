@@ -4,6 +4,7 @@ import { PropsInput } from './style'
 
 export const Input = ({
   width,
+  type,
   labelId,
   textoLabel,
   id,
@@ -20,6 +21,7 @@ export const Input = ({
         name={name}
         onChange={onChange}
         onBlur={onBlur}
+        type={type}
       />
     </StyleContainerInput>
   )
