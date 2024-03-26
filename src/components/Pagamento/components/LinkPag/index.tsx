@@ -4,8 +4,13 @@ import { LinkPag } from './style'
 export type PropsLinkPag = {
   children: string
   rota: string
+  onCLICK?: () => void
 }
 
-export const LinkPAG = ({ children, rota }: PropsLinkPag) => {
-  return <LinkPag to={rota}>{children}</LinkPag>
+export const LinkPAG = ({ children, rota, onCLICK }: PropsLinkPag) => {
+  return (
+    <LinkPag to={rota} onClick={onCLICK}>
+      {children}
+    </LinkPag>
+  )
 }

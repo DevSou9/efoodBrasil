@@ -10,6 +10,10 @@ export const GlobalCss = createGlobalStyle`
     font-family: Roboto, sans-serif;
     list-style: none;
     text-decoration: none;
+
+    button{
+      cursor: pointer;
+    }
   }
 
   body {

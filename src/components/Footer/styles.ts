@@ -37,4 +37,8 @@ export const StyleFooter = styled.footer`
     padding-top: 40px;
     height: 298px;
   }
+
+  a {
+    text-decoration: none;
+  }
 `

@@ -14,9 +14,15 @@ export const Footer = () => {
         </div>
 
         <div className="divRedeSociais">
-          <img src={insta} alt="Logo Insta" />
-          <img src={face} alt="Logo face" />
-          <img src={twitter} alt="Logo twitter" />
+          <a href="#" title="Instagram">
+            <img src={insta} alt="Logo Insta" />
+          </a>
+          <a href="#" title="Facebook">
+            <img src={face} alt="Logo face" />
+          </a>
+          <a href="#" title="Twitter">
+            <img src={twitter} alt="Logo twitter" />
+          </a>
         </div>
 
         <div className="divP">

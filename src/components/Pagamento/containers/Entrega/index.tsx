@@ -13,6 +13,7 @@ import { addEndereco } from '../../../../store/reducer/checkoutTempEndereco'
 import { RootReducer } from '../../../../store'
 import { alterarStautsPagamento } from '../../../../store/reducer/statusPagamento'
 import { alterarStatusEntrega } from '../../../../store/reducer/statusEntrega'
+import { abrirFecharCart } from '../../../../store/reducer/cartAbrirFechar'
 
 export const Entrega = () => {
   const statusEntrega = useSelector(
@@ -28,9 +29,6 @@ export const Entrega = () => {
   // }
   const [dados, setDados] = useState('')
 
-  const dadosParaConsole = useSelector((store: RootReducer) =>
-    JSON.stringify(store.CheckoutTempEntregaSlice.enderecoUsuario)
-  )
   useEffect(() => {
     setDados(dados)
   }, [])
@@ -82,14 +80,13 @@ export const Entrega = () => {
         }
       })
     )
-    verStado()
-    alterarStatusPagamentoNaPagina()
     alterarStatusEntregaNaPagina()
-    // irAoPagamento()
+    alterarStatusPagamentoNaPagina()
   }
 
-  const verStado = () => {
-    console.log(dadosParaConsole)
+  const voltarAoCart = () => {
+    dispatch(alterarStatusEntrega())
+    dispatch(abrirFecharCart())
   }
 
   return (
@@ -174,20 +171,13 @@ export const Entrega = () => {
           />
 
           <div className="divLinkPAG">
-            {/* <button onClick={() => enderecoParaEntrega()} type="button">
-              ++++++++++
-            </button> */}
-            <button type="button" onClick={verStado}>
-              VER no Console
-            </button>
-
             <Button onClick={() => enderecoParaEntrega()} type="button">
               Continuar com o pagamento
             </Button>
 
-            {/* <LinkPAG rota="">Continuar com o pagamento</LinkPAG> */}
-
-            <LinkPAG rota="">Voltar para o carrinho</LinkPAG>
+            <LinkPAG onCLICK={voltarAoCart} rota="">
+              Voltar para o carrinho
+            </LinkPAG>
           </div>
         </StyleForm>
       </form>

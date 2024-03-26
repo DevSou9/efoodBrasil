@@ -3,9 +3,11 @@ import { Aside } from '../../components/Aside'
 import { LinkPAG } from '../../components/LinkPag'
 import { Titulo } from '../../components/Titulo'
 import { StyleP } from './style'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../../../store'
 
 export const Confirmacao = () => {
-  const status = false
+  const status = useSelector((store: RootReducer) => store.statusConcluidoSlice)
 
   return (
     <Aside status={status}>
