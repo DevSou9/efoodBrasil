@@ -6,6 +6,7 @@ import { useGetRestauranteQuery } from '../../service/api'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { abrirFecharCart } from '../../store/reducer/cartAbrirFechar'
+import { Loader } from '../Loader'
 
 export const HeroPerfil = () => {
   const dispatch = useDispatch()
@@ -24,7 +25,7 @@ export const HeroPerfil = () => {
   )
 
   if (loading) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   if (titulo && capa && tipo) {

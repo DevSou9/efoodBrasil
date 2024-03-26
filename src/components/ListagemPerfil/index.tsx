@@ -9,11 +9,12 @@ import { RootReducer } from '../../store'
 import { abrirFechar } from '../../store/reducer/modalCardapio'
 import { dadosCard } from '../../store/reducer/modalDadosCardPefil'
 import { useGetCardapioRestauranteQuery } from '../../service/api'
+import { Loader } from '../Loader'
 
 export const ListagemPerfil = () => {
   const { id } = useParams()
 
-  const { data } = useGetCardapioRestauranteQuery(id!)
+  const { data, isLoading } = useGetCardapioRestauranteQuery(id!)
   const produtos = data?.cardapio
 
   const statusAbrirFechar = useSelector(
@@ -46,6 +47,9 @@ export const ListagemPerfil = () => {
     if (descricao.length > 128) {
       return descricao.slice(0, 125) + '...'
     }
+  }
+  if (isLoading) {
+    return <Loader />
   }
   if (produtos) {
     return (

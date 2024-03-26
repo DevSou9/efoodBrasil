@@ -6,6 +6,7 @@ import { LinkSaibaMais } from '../Links/LinkSaibaMais'
 import { LinkDestaqueSemana } from '../Links/LinkDestaqueSemana'
 import { LinkTypeDish } from '../Links/LinkTypeDish'
 import { useGetTodosRestaurantesQuery } from '../../service/api'
+import { Loader } from '../Loader'
 
 export type Props = {
   modeloCard: ModeloCard[]
@@ -15,7 +16,7 @@ export const Listagem = () => {
   const { data: produtos, isLoading } = useGetTodosRestaurantesQuery()
 
   if (isLoading) {
-    ;<h4>Carregando</h4>
+    return <Loader />
   }
 
   function redutor(descricao: string) {
