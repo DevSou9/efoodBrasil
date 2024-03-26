@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+
 import { Aside } from '../../components/Aside'
 import { Input } from '../../components/Input'
 import { LinkPAG } from '../../components/LinkPag'
@@ -14,6 +15,7 @@ import { useCompraMutation } from '../../../../service/api'
 import { StyleP } from './style'
 import { alterarStautsPagamento } from '../../../../store/reducer/statusPagamento'
 import { alterarStatusEntrega } from '../../../../store/reducer/statusEntrega'
+import { clear } from '../../../../store/reducer/cart'
 
 export const Pagamento = () => {
   const status = useSelector((store: RootReducer) => store.statusPagamentoSlice)
@@ -46,7 +48,7 @@ export const Pagamento = () => {
     return arrayPrecoId
   }
 
-  const [compra, { data, isSuccess }] = useCompraMutation()
+  const [compra, { data, isSuccess, isLoading }] = useCompraMutation()
 
   const dadosDeEntrega = useSelector(
     (store: RootReducer) => store.CheckoutTempEntregaSlice.enderecoUsuario[0]
@@ -64,24 +66,23 @@ export const Pagamento = () => {
       nome: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
-      numeroCartao: Yup.number().required('O campo é obrigatório'),
-      cvv: Yup.number()
-        .min(100, 'O CVV possui 3 dígitos')
-        .max(999, '-O CVV possui 3 dígitos')
+      numeroCartao: Yup.string().required('O campo é obrigatório'),
+      cvv: Yup.string()
+        .min(3, 'O CVV possui 3 dígitos')
+        .max(3, '-O CVV possui 3 dígitos')
 
         .required('O campo é obrigatório'),
-      mesVenc: Yup.number()
-        .min(1, 'Necessário 2 dígitos')
-        .max(12, 'Necessário 2 dígitos')
+      mesVenc: Yup.string()
+        .min(2, 'Necessário 2 dígitos')
+        .max(2, 'Necessário 2 dígitos')
         .required('O campo é obrigatório'),
-      anoVenc: Yup.number()
-        .min(2024, 'Necessário digitar uma data válida de 4 dígitos')
-        .max(3000, 'Necessário digitar uma data válida de 4 dígitos')
+      anoVenc: Yup.string()
+        .min(4, 'Necessário digitar uma data válida de 4 dígitos')
+        .max(4, 'Necessário digitar uma data válida de 4 dígitos')
         .required('O campo é obrigatório')
     }),
     onSubmit: async (values) => {
       try {
-        alert('entrou no try onSubmit')
         await compra({
           products: idPrecoCart(),
           delivery: {
@@ -107,7 +108,7 @@ export const Pagamento = () => {
           }
         })
       } catch {
-        alert('Erro ao realizar o pagamento:')
+        alert('Erro ao finalizar pagamento')
       }
     }
   })
@@ -123,6 +124,12 @@ export const Pagamento = () => {
 
     return temErros
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clear())
+    }
+  }, [isSuccess, dispatch])
 
   return (
     <Aside status={status}>
@@ -191,6 +198,7 @@ export const Pagamento = () => {
                   onBlur={form.handleBlur}
                   type={'text'}
                   classNAME={verificadorErro('numeroCartao') ? 'error' : ''}
+                  mask="9999 9999 9999 9999"
                 />
 
                 <Input
@@ -202,8 +210,9 @@ export const Pagamento = () => {
                   value={form.values.cvv}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  type={'number'}
+                  type={'text'}
                   classNAME={verificadorErro('cvv') ? 'error' : ''}
+                  mask="999"
                 />
               </div>
 
@@ -217,8 +226,9 @@ export const Pagamento = () => {
                   value={form.values.mesVenc}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  type={'number'}
+                  type={'text'}
                   classNAME={verificadorErro('mesVenc') ? 'error' : ''}
+                  mask="99"
                 />
 
                 <Input
@@ -230,14 +240,19 @@ export const Pagamento = () => {
                   value={form.values.anoVenc}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  type={'number'}
+                  type={'text'}
                   classNAME={verificadorErro('anoVenc') ? 'error' : ''}
+                  mask="9999"
                 />
               </div>
 
               <div className="divLinkPAG">
-                <Button type={'submit'} onClick={form.handleSubmit}>
-                  Finalizar pagamento
+                <Button
+                  type={'submit'}
+                  onClick={form.handleSubmit}
+                  disebled={isLoading}
+                >
+                  {isLoading ? 'Finalizando compra...' : 'Finalizar pagamento'}
                 </Button>
 
                 <LinkPAG onCLICK={voltarParaEndereco} rota="">

@@ -1,6 +1,7 @@
+import React from 'react'
+import ReactInputMask from 'react-input-mask'
 import styled from 'styled-components'
 import { colors as cor } from '../../../../variaveis'
-import React from 'react'
 
 export type PropsInput = {
   width: string
@@ -16,6 +17,7 @@ export type PropsInput = {
   ) => void
   verificaErroInput?: () => void
   classNAME?: string
+  mask?: string
 }
 
 export const StyleContainerInput = styled.div`
@@ -23,7 +25,7 @@ export const StyleContainerInput = styled.div`
   flex-direction: column;
 `
 
-export const StyleInput = styled.input<PropsInput>`
+export const StyleInput = styled(ReactInputMask)<PropsInput>`
   width: ${(props) => props.width};
   height: 32px;
   padding: 8px;

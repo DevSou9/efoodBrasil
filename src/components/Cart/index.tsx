@@ -44,7 +44,9 @@ export const Cart = () => {
       <DivCart onClick={cartAbrirFechar} status={statusCart}>
         <StyleAside onClick={(e) => e.stopPropagation()}>
           {pedidosAoCart.length < 1 && (
-            <h3 className="pAlerta">Insira um produto antes de continuar</h3>
+            <h3 className="pAlerta">
+              Adicione pelo memos um produto antes de continuar
+            </h3>
           )}
           {pedidosAoCart.map((item) => (
             <ul key={item.id}>
@@ -64,14 +66,17 @@ export const Cart = () => {
             </ul>
           ))}
 
-          <div className="divValorTotal">
-            <p>Valor Total</p>
-            <p>{somarCart()}</p>
-          </div>
-
-          <button type="button" onClick={abrirDivEntrega}>
-            Continuar com a entrega
-          </button>
+          {!(pedidosAoCart.length < 1) && (
+            <>
+              <div className="divValorTotal">
+                <p>Valor Total</p>
+                <p>{somarCart()}</p>
+              </div>
+              <button type="button" onClick={abrirDivEntrega}>
+                Continuar com a entrega
+              </button>
+            </>
+          )}
         </StyleAside>
       </DivCart>
     </>

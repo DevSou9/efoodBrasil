@@ -11,7 +11,8 @@ export const Input = ({
   name,
   onChange,
   onBlur,
-  classNAME
+  classNAME,
+  mask
 }: PropsInput) => {
   return (
     <StyleContainerInput>
@@ -24,6 +25,7 @@ export const Input = ({
         onBlur={onBlur}
         type={type}
         className={classNAME}
+        mask={mask}
       />
     </StyleContainerInput>
   )

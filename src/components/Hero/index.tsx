@@ -6,7 +6,9 @@ export const Hero = () => {
   return (
     <DivStyle>
       <div className="containerHero">
-        <img src={logo} alt="logo" />
+        <h1>
+          <img src={logo} alt="EFOOD" />
+        </h1>
       </div>
       <div className="containerHero">
         <div className="divTitle">

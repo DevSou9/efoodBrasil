@@ -25,6 +25,7 @@ export const GlobalCss = createGlobalStyle`
     .pAlerta {
     color: ${colors.corCinza};
     margin-bottom: 12px;
+    font-size: 16px;
   }
 
   }

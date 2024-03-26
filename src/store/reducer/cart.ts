@@ -24,9 +24,12 @@ const dadosCartSlice = createSlice({
     },
     removeCard: (state, action: PayloadAction<number>) => {
       state.itens = state.itens.filter((item) => item.id !== action.payload)
+    },
+    clear: (state) => {
+      state.itens = []
     }
   }
 })
 
-export const { addCart, listCard, removeCard } = dadosCartSlice.actions
+export const { addCart, listCard, removeCard, clear } = dadosCartSlice.actions
 export default dadosCartSlice.reducer
