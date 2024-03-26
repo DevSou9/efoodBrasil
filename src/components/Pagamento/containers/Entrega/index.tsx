@@ -160,6 +160,7 @@ export const Entrega = () => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
               classNAME={verificadorErro('cep') ? 'error' : ''}
+              mask="99999-999"
             />
 
             <Input

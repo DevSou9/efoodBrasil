@@ -37,7 +37,7 @@ export const Confirmacao = () => {
         </StyleP>
 
         <div className="divLinkConcluir">
-          <LinkPAG rota="">Concluir</LinkPAG>
+          <LinkPAG rota="/">Concluir</LinkPAG>
         </div>
       </>
     </Aside>

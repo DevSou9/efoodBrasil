@@ -24,6 +24,7 @@ export const Pagamento = () => {
 
   const alterarStatusPagamento = () => {
     dispatch(alterarStautsPagamento())
+    window.location.reload()
   }
 
   type TypeIdPrecoCart = {
@@ -48,7 +49,7 @@ export const Pagamento = () => {
     return arrayPrecoId
   }
 
-  const [compra, { data, isSuccess, isLoading }] = useCompraMutation()
+  const [compra, { data, isSuccess, isLoading, reset }] = useCompraMutation()
 
   const dadosDeEntrega = useSelector(
     (store: RootReducer) => store.CheckoutTempEntregaSlice.enderecoUsuario[0]
@@ -107,6 +108,7 @@ export const Pagamento = () => {
             }
           }
         })
+        reset()
       } catch {
         alert('Erro ao finalizar pagamento')
       }
@@ -134,7 +136,7 @@ export const Pagamento = () => {
   return (
     <Aside status={status}>
       <>
-        {isSuccess ? (
+        {isSuccess && data ? (
           <>
             <Titulo>
               <>Pedido realizado - {data?.orderId}</>
