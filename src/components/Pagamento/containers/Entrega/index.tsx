@@ -20,24 +20,23 @@ export const Entrega = () => {
     (store: RootReducer) => store.statusEntregaSlice
   )
 
-  const dispatch = useDispatch()
-  // const verificardorDeErro = (name: string) =>{
-  //   const touched = name in form.touched
-  //   const errors = name in form.errors
-  //   cont temErro = touched && errors
-  //   return temErro
+  const [campoPreenchido, setCampoPreenchido] = useState(false)
+  // const todosCamposVazios = Object.values(form.values).every(
+  //   (value) => !value
+  // )
+  // if (todosCamposVazios) {
+  //   setCampoPreenchido(true)
+  // } else {
+  //   setCampoPreenchido(false)
   // }
+
+  const dispatch = useDispatch()
+
   const [dados, setDados] = useState('')
 
   useEffect(() => {
     setDados(dados)
   }, [])
-  const getErroMsg = (name: string, message?: string) => {
-    const touched = name in form.touched
-    const errors = name in form.errors
-
-    if (touched && errors) return message
-  }
 
   const form = useFormik({
     initialValues: {
@@ -66,6 +65,17 @@ export const Entrega = () => {
   const alterarStatusEntregaNaPagina = () => dispatch(alterarStatusEntrega())
 
   const enderecoParaEntrega = () => {
+    if (
+      form.values.nome === '' ||
+      form.values.endereco === '' ||
+      form.values.cidade === '' ||
+      form.values.cep === '' ||
+      form.values.numeroEndereco === ''
+    ) {
+      setCampoPreenchido(true)
+      return
+    }
+    setCampoPreenchido(false)
     dispatch(
       addEndereco({
         delivery: {
@@ -89,10 +99,19 @@ export const Entrega = () => {
     dispatch(abrirFecharCart())
   }
 
+  const verificadorErro = (nome: string) => {
+    const touched = nome in form.touched
+    const errors = nome in form.errors
+    const temErros = touched && errors
+
+    return temErros
+  }
+
   return (
     <Aside status={statusEntrega}>
       <form onSubmit={form.handleSubmit}>
         <Titulo>Entrega</Titulo>
+        {campoPreenchido && <h3 className="pAlerta">Preencha os campos</h3>}
         <StyleForm>
           <Input
             width={'100%'}
@@ -103,8 +122,9 @@ export const Entrega = () => {
             value={form.values.nome}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            classNAME={verificadorErro('nome') ? 'error' : ''}
           />
-          <small>{getErroMsg('nome', form.errors.nome)}</small>
+
           <Input
             width={'100%'}
             textoLabel={'Endereço'}
@@ -114,8 +134,8 @@ export const Entrega = () => {
             value={form.values.endereco}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            classNAME={verificadorErro('endereco') ? 'error' : ''}
           />
-          <small>{getErroMsg('endereco', form.errors.endereco)}</small>
 
           <Input
             width={'100%'}
@@ -126,8 +146,8 @@ export const Entrega = () => {
             value={form.values.cidade}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            classNAME={verificadorErro('cidade') ? 'error' : ''}
           />
-          <small>{getErroMsg('cidade', form.errors.cidade)}</small>
 
           <div className="divInput">
             <Input
@@ -139,6 +159,7 @@ export const Entrega = () => {
               value={form.values.cep}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              classNAME={verificadorErro('cep') ? 'error' : ''}
             />
 
             <Input
@@ -150,13 +171,8 @@ export const Entrega = () => {
               value={form.values.numeroEndereco}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              classNAME={verificadorErro('numeroEndereco') ? 'error' : ''}
             />
-            <small className="smallInline">
-              {getErroMsg('cep', form.errors.cep)}
-            </small>
-            <small className="smallInline">
-              {getErroMsg('numeroEndereco', form.errors.numeroEndereco)}
-            </small>
           </div>
 
           <Input
@@ -168,6 +184,7 @@ export const Entrega = () => {
             value={form.values.complementoEndereco}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            classNAME={verificadorErro('complementoEndereco') ? 'error' : ''}
           />
 
           <div className="divLinkPAG">

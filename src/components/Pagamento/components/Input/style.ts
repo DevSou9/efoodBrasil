@@ -15,6 +15,7 @@ export type PropsInput = {
     evento?: React.FocusEvent<HTMLInputElement, Element> | undefined
   ) => void
   verificaErroInput?: () => void
+  classNAME?: string
 }
 
 export const StyleContainerInput = styled.div`
@@ -34,6 +35,10 @@ export const StyleInput = styled.input<PropsInput>`
   color: ${cor.corCinza};
   border: 1px solid ${cor.corSecundaria};
   margin-bottom: 8px;
+
+  &.error {
+    border: solid 2px red;
+  }
 `
 export const StyleLabel = styled.label`
   font-size: 14px;

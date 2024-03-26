@@ -15,6 +15,7 @@ export const Cart = () => {
   }
 
   const abrirDivEntrega = () => {
+    if (pedidosAoCart.length < 1) return
     dispatch(alterarStatusEntrega())
     cartAbrirFechar()
   }
@@ -42,6 +43,9 @@ export const Cart = () => {
     <>
       <DivCart onClick={cartAbrirFechar} status={statusCart}>
         <StyleAside onClick={(e) => e.stopPropagation()}>
+          {pedidosAoCart.length < 1 && (
+            <h3 className="pAlerta">Insira um produto antes de continuar</h3>
+          )}
           {pedidosAoCart.map((item) => (
             <ul key={item.id}>
               <div className="divImg">

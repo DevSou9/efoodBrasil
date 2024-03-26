@@ -22,6 +22,11 @@ export const GlobalCss = createGlobalStyle`
     margin: 0;
     padding: 0;
 
+    .pAlerta {
+    color: ${colors.corCinza};
+    margin-bottom: 12px;
+  }
+
   }
 
   .container {

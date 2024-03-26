@@ -81,6 +81,7 @@ export const Pagamento = () => {
     }),
     onSubmit: async (values) => {
       try {
+        alert('entrou no try onSubmit')
         await compra({
           products: idPrecoCart(),
           delivery: {
@@ -115,11 +116,12 @@ export const Pagamento = () => {
     (store: RootReducer) => store.dadosCartSlice.itens
   )
 
-  const verificadorErro = (nome: string, msg?: string) => {
+  const verificadorErro = (nome: string) => {
     const touched = nome in form.touched
     const errors = nome in form.errors
-    if (touched && errors) return msg
-    return ''
+    const temErros = touched && errors
+
+    return temErros
   }
 
   return (
@@ -174,10 +176,9 @@ export const Pagamento = () => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 type={'text'}
+                classNAME={verificadorErro('nome') ? 'error' : ''}
               />
-              <small className="primeiroSmall">
-                {verificadorErro('nome', form.errors.nome)}
-              </small>
+
               <div className="divInputNCartao">
                 <Input
                   width={'228px'}
@@ -189,6 +190,7 @@ export const Pagamento = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   type={'text'}
+                  classNAME={verificadorErro('numeroCartao') ? 'error' : ''}
                 />
 
                 <Input
@@ -201,11 +203,8 @@ export const Pagamento = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   type={'number'}
+                  classNAME={verificadorErro('cvv') ? 'error' : ''}
                 />
-                <small>
-                  {verificadorErro('numeroCartao', form.errors.numeroCartao)}
-                </small>
-                <small>{verificadorErro('cvv', form.errors.cvv)}</small>
               </div>
 
               <div className="divInput">
@@ -219,6 +218,7 @@ export const Pagamento = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   type={'number'}
+                  classNAME={verificadorErro('mesVenc') ? 'error' : ''}
                 />
 
                 <Input
@@ -231,9 +231,8 @@ export const Pagamento = () => {
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   type={'number'}
+                  classNAME={verificadorErro('anoVenc') ? 'error' : ''}
                 />
-                <small>{verificadorErro('mesVenc', form.errors.mesVenc)}</small>
-                <small>{verificadorErro('anoVenc', form.errors.anoVenc)}</small>
               </div>
 
               <div className="divLinkPAG">

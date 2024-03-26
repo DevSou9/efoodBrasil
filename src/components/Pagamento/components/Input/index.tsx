@@ -10,7 +10,8 @@ export const Input = ({
   id,
   name,
   onChange,
-  onBlur
+  onBlur,
+  classNAME
 }: PropsInput) => {
   return (
     <StyleContainerInput>
@@ -22,6 +23,7 @@ export const Input = ({
         onChange={onChange}
         onBlur={onBlur}
         type={type}
+        className={classNAME}
       />
     </StyleContainerInput>
   )
