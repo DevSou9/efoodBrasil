@@ -28,7 +28,7 @@ export const Footer = () => {
         <div className="divP">
           A efood é uma plataforma para divulgação de estabelecimentos, a
           responsabilidade pela entrega, qualidade dos produtos é toda do
-          estabelecimento contratado.{' '}
+          estabelecimento contratado.
         </div>
       </div>
     </StyleFooter>
