@@ -10,12 +10,6 @@ type Product = {
 type dadosParaRequisicao = {
   products: Product[]
 
-  // products: [
-  //   {
-  //     id: 1
-  //     price: 0
-  //   }
-  // ]
   delivery: {
     receiver: string
     address: {
@@ -47,7 +41,9 @@ const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://fake-api-tau.vercel.app/api/efood/'
   }),
+
   endpoints: (builder) => ({
+    //
     getDestaqueEfood: builder.query<cardapio, void>({
       query: () => 'restaurantes/destaque'
     }),

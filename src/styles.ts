@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import { colors } from './variaveis'
+import { breakpoints, colors } from './variaveis'
 import { Link } from 'react-router-dom'
 
 export const GlobalCss = createGlobalStyle`
@@ -35,7 +35,26 @@ export const GlobalCss = createGlobalStyle`
     width: 100%;
     margin: 0 auto;
 
+
+
   }
+
+
+  .novoContainer {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media(max-width: ${breakpoints.tablet}){
+      margin-bottom: 36px;
+    }
+    @media((max-width: ${breakpoints.tablet}) and (min-width: ${breakpoints.mobile})){
+      width: 90%;
+    }
+
+  }
+
+
 `
 export const MixinLinks = styled(Link)`
   height: 26px;

@@ -53,7 +53,7 @@ export const ListagemPerfil = () => {
   }
   if (produtos) {
     return (
-      <div className="container">
+      <div id="idContainer" className="novoContainer">
         {statusAbrirFechar && <ModalCardapio />}
         <StyleListagemPerfil>
           {produtos.map((item) => (

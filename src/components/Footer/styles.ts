@@ -1,11 +1,16 @@
 import styled from 'styled-components'
-import { colors as cor } from '../../variaveis'
+import { breakpoints, colors as cor } from '../../variaveis'
 
 export const StyleFooter = styled.footer`
   width: 100%;
   height: 298px;
   background-color: ${cor.corSecundaria};
   margin-top: 120px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 56px;
+  }
+
   div {
     margin-left: auto;
     margin-right: auto;
@@ -40,5 +45,13 @@ export const StyleFooter = styled.footer`
 
   a {
     text-decoration: none;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    .divP {
+      max-width: 90%;
+      width: 100%;
+      margin-top: 60px;
+    }
   }
 `

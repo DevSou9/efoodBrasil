@@ -8,3 +8,9 @@ export const colors = {
   corBranca: '#fff',
   corCinza: '#4B4B4B'
 }
+
+export const breakpoints = {
+  desktop: '1366px',
+  tablet: '1025px',
+  mobile: '769px'
+}
