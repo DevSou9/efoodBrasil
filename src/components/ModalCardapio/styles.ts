@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors as cor } from '../../variaveis'
+import { breakpoints, colors as cor } from '../../variaveis'
 
 export const StyleModalCardapio = styled.div`
   position: fixed;
@@ -26,6 +26,23 @@ export const StyleModalContent = styled.div`
   gap: 24px;
   color: ${cor.corSecundaria};
 
+  @media ((max-width: ${breakpoints.tablet})) and (min-width: ${breakpoints.mobile}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+  }
+
   header {
     display: flex;
 
@@ -33,6 +50,10 @@ export const StyleModalContent = styled.div`
       font-size: 18px;
       font-weight: 900;
       margin-bottom: 16px;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        text-align: center;
+      }
     }
 
     p {
@@ -42,6 +63,17 @@ export const StyleModalContent = styled.div`
 
     .pPocao {
       margin-bottom: 16px;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        text-align: center;
+      }
+    }
+  }
+
+  .divAddCarrinho {
+    @media (max-width: ${breakpoints.tablet}) {
+      display: flex;
+      justify-content: center;
     }
   }
 
@@ -52,6 +84,17 @@ export const StyleModalContent = styled.div`
     position: absolute;
     top: 8px;
     right: 8px;
+
+    @media ((max-width: ${breakpoints.tablet}) and (min-width: ${breakpoints.mobile})) {
+      top: 16px;
+      right: 16px;
+    }
+  }
+
+  .imgResponsivo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
 
   .imgProduto {
@@ -59,5 +102,19 @@ export const StyleModalContent = styled.div`
     width: 280px;
     height: 280px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      display: flex;
+      width: 60%;
+      height: 60%;
+      object-fit: cover;
+    }
+
+    @media ((max-width: ${breakpoints.tablet})) and (min-width: ${breakpoints.mobile}) {
+      display: flex;
+      width: 30%;
+      height: 30%;
+      object-fit: cover;
+    }
   }
 `

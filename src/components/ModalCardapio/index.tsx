@@ -27,7 +27,7 @@ export const ModalCardapio = () => {
     <>
       <StyleModalCardapio onClick={abrirFecharModal}></StyleModalCardapio>
       <StyleModalContent>
-        <div>
+        <div className="imgResponsivo">
           <img className="imgProduto" src={dadosCardapio[0].foto} />
         </div>
 
@@ -51,7 +51,7 @@ export const ModalCardapio = () => {
               />
             </div>
           </header>
-          <div onClick={cartAbrirFechar}>
+          <div className="divAddCarrinho" onClick={cartAbrirFechar}>
             <LinkAdicionarCarrinhoFinal
               itens={{
                 id: dadosCardapio[0].id,

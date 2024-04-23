@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors as cor } from '../../variaveis'
+import { breakpoints, colors as cor } from '../../variaveis'
 
 type PropsStatusCart = {
   status: boolean
@@ -33,6 +33,12 @@ export const StyleAside = styled.aside`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media ((max-width: ${breakpoints.tablet}) and (min-width: ${breakpoints.mobile})) {
+    max-width: 70%;
+    width: 100%;
+    height: 100%;
+  }
 
   ul {
     background-color: ${cor.corSecundaria};
